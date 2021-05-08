@@ -10,7 +10,7 @@ const apiKey = 'c671dea7e4f04fb4ae77ac22ada6dd52'
 function test() {
     VoiceRSS.speech({
         key: apiKey,
-        src: 'Hello, Boris. What are yo doing? Let us play chess!',
+        src: 'Boris. Answer me ASAP',
         hl: 'en-us',
         v: 'Linda',
         r: 0, 
