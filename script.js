@@ -7,10 +7,10 @@ const VoiceRSS={speech(e){this._validate(e),this._request(e)},_validate(e){if(!e
 
 const apiKey = 'c671dea7e4f04fb4ae77ac22ada6dd52'
 
-function test() {
+function tellMeJoke(joke) {
     VoiceRSS.speech({
         key: apiKey,
-        src: 'Nikolay Vorontsov, stop doing what you are doing now and SUCK my DICK, ha ha ha ha ha!.   HA HA HA HA HA.     Ha ha!',
+        src: joke,
         hl: 'en-us',
         v: 'Linda',
         r: 0, 
@@ -20,4 +20,21 @@ function test() {
     });
 }
 
-test();
+// Get Joke from Joke API
+async function getJoke() {
+    const apiUrl = 'https://sv443.net/jokeapi/v2/joke/Any';
+    let joke = '';
+    try {
+        const response = await fetch(apiUrl);
+        const jokesArray = await response.json();
+        joke = jokesArray.setup ? `${jokesArray.setup} ... ${jokesArray.delivery}` : jokesArray.joke;
+        tellMeJoke(joke);
+    } catch (error) {
+        console.log('ayayay', error)
+    }
+}
+
+// On Load
+getJoke();
+
+// tellJoke();
